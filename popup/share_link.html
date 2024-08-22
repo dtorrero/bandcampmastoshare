@@ -1,36 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                width: 200px;
-                padding: 10px;
-            }
-            button {
-                width: 100%;
-                padding: 10px;
-                background-color: #007bff;
-                color: white;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                margin-top: 10px;
-            }
-            button:hover {
-                background-color: #0056b3;
-            }
-            #server-input {
-                width: 100%;
-                padding: 5px;
-                margin-top: 10px;
-            }
-        </style>
-    </head>
-    <body>
-        <h3 id="page-title">Loading title...</h3>
-        <input type="text" id="server-input" placeholder="Enter Mastodon server (e.g., mastodon.social)" />
-        <button id="redirect-button">Share on Mastodon</button>
-        <script src="share_link.js"></script>
-    </body>
+<head>
+  <title>Share Bandcamp Link</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+    }
+    #server-input {
+      width: 100%;
+      padding: 5px;
+      margin-top: 10px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+    #server-input.error {
+      border-color: #ff0000;
+    }
+    #error-hint {
+      color: #ff0000;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h3 id="page-title">Loading title...</h3>
+  <input type="text" id="server-input" placeholder="Enter Mastodon server (e.g., mastodon.social)" />
+  <div id="error-hint">Please enter your Mastodon server</div>
+  <button id="redirect-button">Share on Mastodon</button>
+  <script src="share_link.js"></script>
+</body>
 </html>

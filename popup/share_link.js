@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pageTitle = document.getElementById('page-title');
     const serverInput = document.getElementById('server-input');
     const redirectButton = document.getElementById('redirect-button');
+    const errorHint = document.getElementById('error-hint');
 
     // Load the last used server from storage
     browser.storage.local.get('lastUsedServer').then(result => {
@@ -25,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         const mastodonShareUrl = `https://${server}/share?text=${encodedUrl}`;
                         browser.tabs.create({ url: mastodonShareUrl });
                     } else {
-                        alert("Please enter a Mastodon server.");
+                        serverInput.classList.add('error');
+                        errorHint.style.display = 'block';
                     }
                 });
             } else {
@@ -40,4 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
             redirectButton.disabled = true;
             serverInput.disabled = true;
         });
+
+    serverInput.addEventListener('input', () => {
+        if (serverInput.value.trim() !== '') {
+            serverInput.classList.remove('error');
+            errorHint.style.display = 'none';
+        }
+    });
 });
